@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#00000000"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/YesOrNo_relativeLayout"
+        android:layout_width="460dp"
+        android:layout_height="280dp"
+        android:layout_margin="@dimen/dp_30"
+        android:background="@drawable/bg_options_menu">
+
+        <TextView
+            android:id="@+id/tv_YesOrNo_info"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="42dp"
+            android:gravity="center"
+            android:maxLines="2"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:text="--"
+            android:textColor="#1D5ADD"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_YesOrNo_left"
+            android:layout_width="wrap_content"
+            android:layout_height="55dp"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/selector_btn"
+            android:gravity="center"
+            android:paddingStart="60dp"
+            android:paddingEnd="60dp"
+            android:text="取消"
+            android:textColor="#ff303030"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_YesOrNo_right"
+            android:layout_width="wrap_content"
+            android:layout_height="55dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/selector_btn"
+            android:gravity="center"
+            android:paddingStart="60dp"
+            android:paddingEnd="60dp"
+            android:text="确定"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_YesOrNo_center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/shape_btn_bg_new"
+            android:gravity="center"
+            android:paddingStart="63dp"
+            android:paddingTop="8dp"
+            android:paddingEnd="63dp"
+            android:paddingBottom="8dp"
+            android:text="@string/str_ckxq"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/iv_YesOrNo_close"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="10dp" />
+    </RelativeLayout>
+</LinearLayout>
+

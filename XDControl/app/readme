@@ -1,0 +1,76 @@
+10001   WorkStatus
+10002   ErrorStatus
+10003   Position
+10004   测距传感器数据
+
+
+90001   serial连接状态    0:disconnected   1：connected
+90004   mqtt连接状态    0:disconnected   1：connected  2:error
+
+80001   锁屏触发
+80002   解锁触发
+80003   顶柜下降
+80004   顶柜上升
+80005   顶柜电机停
+80006   打开交流220V
+80007   关闭交流220V
+80008   顶柜到达位置  （接受1参数）
+80009   蛋体下降
+80010   蛋体上升
+80011   蛋体电机停止
+80012   所有电机停止
+80013   回收确认
+80014   调整DC    （接受2参数）
+80015   调整AC    （接受2参数）
+80016   取消回收确认
+80017   强制回收
+80018   一键开机
+
+topic:
+    ①clients/$clientId          --->String
+    ②clients/status/$clientId   --->String 状态
+    ③command/$clientId          --->二进制 command
+Status:
+    "0"  connect success
+    "1"  disConnect success
+    "2"  lostConnect success
+    "3"  subscribe success
+    "4"  unSubscribe success
+
+master->client 下发指令
+// 包结构示例（Type=15, Switch=true, Value=25.5）
+05 01 41 CC 00 00 3A 7B
+└┬┘ └┬┘ └──────┬──────┘ └──┬──┘
+ │   │        │           └ CRC16
+ │   │        └ IEEE754浮点数（大端）
+ │   └ 开关状态（0/1）
+ └ 指令类型（1-40）
+
+client->master 上报状态
+协议结构
+[起始符2][版本1][数据长度2][clientId长度1][clientIdN][IP4][布尔字段2][AC电压4][DC电压4][CRC16-CCITT2]
+字段说明
+1.起始符 ：0xAA55（2字节）
+2.协议版本 ：0x01（1字节）
+3.数据长度 ：后续字段总长度（2字节，大端）
+4.Client ID ：  长度：1字节（0-255）
+                内容：UTF-8字节
+5.IP地址：4字节（每段1字节）
+6.布尔字段：
+    字节1：
+    bit0: isLock
+    bit1: isOn220AC
+    bit2: PowerStatus.isACon
+    bit3: PowerStatus.isDCon
+    bit4: ErrorStatus.acOverCurrent
+    bit5: ErrorStatus.eggEndTimeout
+    bit6: ErrorStatus.eggOriginTimeout
+    bit7: ErrorStatus.topOriginTimeout
+    字节2：
+    bit0: WorkStatus.eggMotorOrigin
+    bit1: WorkStatus.eggMotorEnd
+    bit2: WorkStatus.topMotorOrigin
+    bit3: WorkStatus.topMotorPosition
+    bit4: WorkStatus.acOutputOn
+7.电压值：各4字节（IEEE 754单精度浮点，大端）
+8.CRC校验：CRC16-CCITT（2字节，大端）

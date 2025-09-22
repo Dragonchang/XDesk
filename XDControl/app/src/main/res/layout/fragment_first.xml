@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:background="#000"
+    android:paddingTop="14dp"
+    tools:context=".fragment.FirstFragment">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:src="@mipmap/stu_bg2"
+        android:visibility="gone" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:src="@mipmap/stu_bg" />
+
+    <TextView
+        android:id="@+id/tv_first_voltage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:paddingEnd="10dp"
+        android:shadowColor="#80000000"
+        android:shadowDx="8"
+        android:shadowDy="8"
+        android:shadowRadius="4"
+        android:text="0 V"
+        android:textColor="#FFFFFF"
+        android:textSize="123sp"
+        android:textStyle="italic|bold" />
+
+    <TextView
+        android:id="@+id/tv_first_acdc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="96dp"
+        android:text="OFF"
+        android:textColor="#FFFFFF"
+        android:textSize="48sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="104dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingStart="10dp"
+            android:paddingTop="2dp"
+            android:paddingEnd="10dp"
+            android:paddingBottom="2dp"
+            android:text="AC 220V"
+            android:textColor="#FFFFFF"
+            android:textSize="25sp" />
+
+        <ImageView
+            android:id="@+id/iv_first_ac220"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/selector_ac220" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/bg_stu_text"
+            android:paddingStart="21dp"
+            android:paddingTop="2dp"
+            android:paddingEnd="21dp"
+            android:paddingBottom="2dp"
+            android:text="~ A"
+            android:textColor="#FFFFFF"
+            android:textSize="28sp"
+            android:visibility="gone" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="30dp"
+            android:background="@drawable/bg_stu_text"
+            android:paddingStart="21dp"
+            android:paddingTop="2dp"
+            android:paddingEnd="21dp"
+            android:paddingBottom="2dp"
+            android:text="~ W"
+            android:textColor="#FFFFFF"
+            android:textSize="28sp"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@mipmap/stu_bg2">
+
+        <RelativeLayout
+            android:id="@+id/rl_stu_up"
+            android:layout_width="58dp"
+            android:layout_height="58dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="60dp"
+            android:background="@drawable/bg_click_effect"
+            android:clickable="true"
+            android:focusable="true"
+            android:scaleX="1.2"
+            android:scaleY="1.2">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="@mipmap/ic_bg" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="@mipmap/ic_up" />
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/iv_stu_stop"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="13dp"
+            android:background="@drawable/bg_click_effect"
+            android:clickable="true"
+            android:focusable="true"
+            android:scaleType="center"
+            android:scaleX="1.2"
+            android:scaleY="1.2"
+            android:src="@mipmap/ic_stop" />
+
+        <RelativeLayout
+            android:id="@+id/rl_stu_down"
+            android:layout_width="58dp"
+            android:layout_height="58dp"
+            android:layout_marginStart="321dp"
+            android:layout_marginTop="60dp"
+            android:background="@drawable/bg_click_effect"
+            android:clickable="true"
+            android:focusable="true"
+            android:scaleX="1.2"
+            android:scaleY="1.2">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="@mipmap/ic_bg" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="@mipmap/ic_down" />
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/iv_light"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|bottom"
+        android:layout_marginBottom="30dp"
+        android:src="@mipmap/light" />
+</FrameLayout>

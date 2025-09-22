@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_selected="true">
+        <color android:color="#00BFFF" /> <!-- 选中时的浅蓝色 -->
+    </item>
+    <item>
+        <color android:color="#708090" /> <!-- 未选中时的灰色 -->
+    </item>
+</selector>

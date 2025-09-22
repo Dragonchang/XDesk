@@ -1,0 +1,13 @@
+//                    robotApp.mqttService?.sendClients(model.clientIds, model.toString())
+//                    robotApp.mqttService?.sendCommandToClient(
+//                        clientId = "XD1",
+//                        type = 5,
+//                        switch = true,
+//                        value = 25.5f
+//                    )
+//                    robotApp.mqttService?.sendCommandToAll(
+//                        model.clientIds,
+//                        type = 5,
+//                        switch = true,
+//                        value = 25.5f
+//                    )

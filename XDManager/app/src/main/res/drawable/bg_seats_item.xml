@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="#40FFFFFF"> <!-- 半透明白色涟漪 -->
+
+    <!-- 默认背景 -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#2D2D2D" /> <!-- 与原图一致的深灰色 -->
+            <stroke
+                android:width="0.5dp"
+                android:color="#2D2D2D" />
+            <corners android:radius="4dp" /> <!-- 保持圆角 -->
+        </shape>
+    </item>
+
+    <!-- 按压状态颜色覆盖层 -->
+    <item android:id="@android:id/mask">
+        <shape android:shape="rectangle">
+            <solid android:color="#3D3D3D" /> <!-- 按压时颜色变亮 -->
+            <corners android:radius="4dp" />
+        </shape>
+    </item>
+</ripple>

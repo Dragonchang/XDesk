@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true">
+        <scale android:pivotX="50%" android:pivotY="50%" android:scaleX="0.35" android:scaleY="0.95">
+            <shape>
+                <gradient android:angle="135" android:centerColor="#992B2B2C" android:endColor="#992B2B2C" android:startColor="#991C1C1D" android:type="linear" />
+
+                <stroke android:width="0dp" android:color="#ffffff" />
+                <corners android:radius="18dp" />
+            </shape>
+        </scale>
+    </item>
+    <!-- 默认状态 -->
+    <item>
+        <shape>
+            <gradient android:angle="135" android:centerColor="#992B2B2C" android:endColor="#992B2B2C" android:startColor="#991C1C1D" android:type="linear" />
+
+            <stroke android:width="0dp" android:color="#ffffff" />
+            <corners android:radius="18dp" />
+        </shape>
+    </item>
+</selector>

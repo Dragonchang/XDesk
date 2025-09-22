@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingStart="100dp"
+    android:paddingEnd="100dp"
+    tools:context=".fragment.CallFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/bg_seats"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="22dp"
+            android:background="@drawable/bg_seats_item"
+            android:button="@null"
+            android:drawablePadding="10dp"
+            android:gravity="center"
+            android:paddingStart="52dp"
+            android:paddingTop="4dp"
+            android:paddingEnd="52dp"
+            android:paddingBottom="4dp"
+            android:text="讲台"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyc_lift"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:paddingStart="20dp" />
+
+        <Switch
+            android:id="@+id/switch_jiankong"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:checked="false" />
+    </LinearLayout>
+
+</FrameLayout>

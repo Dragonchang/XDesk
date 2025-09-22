@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.LiftFragment">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="385dp"
+        android:text="2.选择模式"
+        android:textColor="#ffffffff"
+        android:textSize="15sp" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="422dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="184dp"
+            android:layout_height="225dp"
+            android:background="@drawable/shape_btn_bg"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/ll_lift_estop"
+                android:layout_width="137dp"
+                android:layout_height="160dp"
+                android:background="@drawable/shape_btn_bg_small"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="center"
+                    android:src="@mipmap/ic_estop" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="19dp"
+                    android:text="急 停"
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="当前停止高度 ~m"
+                android:textColor="@color/grey"
+                android:textSize="12sp"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="184dp"
+            android:layout_height="225dp"
+            android:layout_marginStart="15dp"
+            android:background="@drawable/shape_btn_bg"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/ll_lift_up"
+                android:layout_width="137dp"
+                android:layout_height="160dp"
+                android:background="@drawable/shape_btn_bg_up"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="center"
+                    android:src="@mipmap/ic_control_up" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="19dp"
+                    android:text="上 升"
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="当前停止高度 ~m"
+                android:textColor="@color/grey"
+                android:textSize="12sp"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="184dp"
+            android:layout_height="225dp"
+            android:layout_marginStart="15dp"
+            android:background="@drawable/shape_btn_bg"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/ll_lift_down"
+                android:layout_width="137dp"
+                android:layout_height="160dp"
+                android:background="@drawable/shape_btn_bg_down"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="center"
+                    android:src="@mipmap/ic_control_down" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="19dp"
+                    android:text="下 降"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="当前停止高度 ~m"
+                android:textColor="@color/grey"
+                android:textSize="12sp"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="204dp"
+            android:layout_height="225dp"
+            android:layout_marginStart="15dp"
+            android:background="@drawable/shape_btn_bg"
+            android:orientation="vertical"
+            android:paddingStart="15dp"
+            android:paddingTop="20dp"
+            android:paddingEnd="15dp">
+
+            <TextView
+                android:id="@+id/tv_lift_top"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@drawable/shape_btn_bg_top"
+                android:clickable="true"
+                android:drawablePadding="-30dp"
+                android:focusable="true"
+                android:gravity="center"
+                android:paddingStart="20dp"
+                android:text="升至顶"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:drawableStartCompat="@mipmap/ic_top" />
+
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="214dp"
+            android:layout_height="225dp"
+            android:layout_marginStart="15dp"
+            android:background="@drawable/shape_btn_bg"
+            android:orientation="vertical"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp">
+
+            <TextView
+                android:id="@+id/tv_lift_setting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="3dp"
+                android:drawablePadding="6dp"
+                android:gravity="center"
+                android:paddingStart="15dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="15dp"
+                android:paddingBottom="5dp"
+                android:text="自定义"
+                android:textColor="#ff1ce4ff"
+                android:textSize="12sp"
+                app:drawableStartCompat="@drawable/ic_baseline_settings_24" />
+
+            <Button
+                android:id="@+id/tv_lift_down1"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="35dp"
+                android:background="@drawable/shape_btn_bg_top"
+                android:clickable="true"
+                android:drawablePadding="-30dp"
+                android:focusable="true"
+                android:gravity="center"
+                android:paddingStart="20dp"
+                android:text="降至设定高度"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:drawableStartCompat="@mipmap/ic_bottom" />
+
+            <Button
+                android:id="@+id/tv_lift_down2"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@+id/tv_lift_down1"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/shape_btn_bg_top"
+                android:clickable="true"
+                android:drawablePadding="-30dp"
+                android:focusable="true"
+                android:gravity="center"
+                android:paddingStart="20dp"
+                android:text="降至设定高度"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:drawableStartCompat="@mipmap/ic_bottom" />
+
+            <Button
+                android:id="@+id/tv_lift_down3"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@+id/tv_lift_down2"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/shape_btn_bg_top"
+                android:clickable="true"
+                android:drawablePadding="-30dp"
+                android:focusable="true"
+                android:gravity="center"
+                android:paddingStart="20dp"
+                android:text="降至设定高度"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:drawableStartCompat="@mipmap/ic_bottom" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="30dp"
+            android:text="1.请选择座位"
+            android:textColor="#ffffffff"
+            android:textSize="15sp" />
+
+        <CheckBox
+            android:id="@+id/checkbox_select_all2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@drawable/checkbox_selector"
+            android:clickable="true"
+            android:focusable="true"
+            android:paddingStart="8dp"
+            android:text="全选"
+            android:textColor="#fff"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="322dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="190dp"
+        android:background="@drawable/bg_seats"
+        android:orientation="vertical">
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="22dp"
+            android:background="@drawable/bg_seats_item"
+            android:button="@null"
+            android:drawableStart="@drawable/checkbox_selector"
+            android:drawablePadding="10dp"
+            android:gravity="center"
+            android:paddingStart="46dp"
+            android:paddingTop="4dp"
+            android:paddingEnd="46dp"
+            android:paddingBottom="4dp"
+            android:text="讲台"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyc_lift"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:paddingStart="20dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="end"
+        android:layout_marginTop="40dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="147dp"
+            android:layout_height="183dp"
+            android:layout_marginTop="90dp"
+            android:background="@drawable/shape_btn_bg"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/ll_lift_close"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:background="@drawable/shape_btn_bg_up"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="center"
+                    android:src="@mipmap/ic_close" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="一键关机"
+                    android:textColor="@color/white"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="147dp"
+            android:layout_height="183dp"
+            android:layout_marginTop="90dp"
+            android:background="@drawable/shape_btn_bg"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/ll_lift_lock"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:background="@drawable/shape_btn_bg_up"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="center"
+                    android:src="@mipmap/ic_lock_oo" />
+
+                <TextView
+                    android:id="@+id/tv_lift_lock_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="一键锁屏"
+                    android:textColor="@color/white"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>
