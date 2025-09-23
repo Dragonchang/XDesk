@@ -3,6 +3,8 @@ package com.xd.lib_can;
 
 import android.util.Log;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
@@ -13,12 +15,14 @@ public class CanInterfaceDevice {
     //can接口文件描述符
     private int m_FD;
     private android_socketcan m_AndroidSocketcan = new android_socketcan();
-    private InterfaceStatus m_InterfaceStatus = InterfaceStatus.INTERFACE_STATUS_DOWN;
+    private InterfaceStatus m_InterfaceStatus = InterfaceStatus.INTERFACE_STATUS_NONE;
 
     private BlockingQueue<CanMessage> mQueue = new LinkedBlockingQueue<>();
     private SendThread mSendThread = new SendThread();
-    private ReceiveThread mReceiveThread;
+    private ReceiveThread mReceiveThread = new ReceiveThread();
     private Boolean mRunning = false;
+
+    List<ICanMessageReceiveCallBack> mMessageCallbacks = new ArrayList<>();
 
     public static volatile CanInterfaceDevice INSTANCE;
 
@@ -34,7 +38,15 @@ public class CanInterfaceDevice {
     }
 
     private CanInterfaceDevice() {
+        int fd = OpenCanInterface();
+        if(fd < 0) {
+            Log.w("CanInterfaceDevice", "OpenCanInterface failed with fd: " + fd);
 
+        }
+        else {
+            mSendThread.start();
+            mReceiveThread.start();
+        }
 
     }
 
@@ -59,12 +71,10 @@ public class CanInterfaceDevice {
     private int OpenCanInterface()
     {
         m_FD = m_AndroidSocketcan.socketcanOpen(m_InterfaceName);
-        return -1;
+        Log.i("CanInterfaceDevice", "OpenCanInterface fd: " + m_FD);
+        return m_FD;
     }
 
-    public int WriteData() {
-        return -1;
-    }
     public void sendMessage(CanMessage msg) {
         if (msg != null) {
             mQueue.offer(msg);
@@ -72,11 +82,6 @@ public class CanInterfaceDevice {
             Log.e("CanInterfaceDevice", "sendMessage failed:" + msg.toString());
         }
     }
-    public long[] ReadData()
-    {
-        return new long[10];
-    }
-
 
     class SendThread extends Thread {
         @Override
@@ -93,7 +98,8 @@ public class CanInterfaceDevice {
     }
 
     private void sendMessageImp(CanMessage msg) {
-
+        int ret = m_AndroidSocketcan.socketcanWrite(m_FD, msg.canid, msg.eff, msg.rtr, msg.len, msg.data);
+        Log.i("CanInterfaceDevice", "sendMessageImp with ret: " + ret);
     }
 
     class ReceiveThread extends Thread {

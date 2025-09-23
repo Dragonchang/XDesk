@@ -5,6 +5,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 public enum InterfaceStatus {
+    INTERFACE_STATUS_NONE(0, "none"),
     INTERFACE_STATUS_UP(1, "up"),
     INTERFACE_STATUS_DOWN(2, "down");
 

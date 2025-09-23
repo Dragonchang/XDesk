@@ -5,6 +5,8 @@ import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.xd.lib_can.CanInterfaceDevice;
+import com.xd.lib_can.CanMessage;
 import com.xd.lib_can.android_socketcan;
 import com.xd.lib_can.databinding.ActivityDemoBinding;
 
@@ -18,13 +20,15 @@ public class DemoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityDemoBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        android_socketcan androidSocketcan = new android_socketcan();
-        int fd = androidSocketcan.socketcanOpen("can0");
-        if(fd < 0) {
-            Log.e("DemoActivity", "open can0 failed with: "+ fd);
-        }
-
-
+        int[] data = {0xA0, 0xA1, 0xA2, 0xA3, 0xA4, 0xA5, 0xA6, 0xA7};
+        data[0] = (data[0] + 1) % 0xFF;
+        CanMessage canMessage = new CanMessage();
+        canMessage.canid = 123;
+        canMessage.eff = 0;
+        canMessage.rtr = 0;
+        canMessage.len = 8;
+        canMessage.data = data;
+        CanInterfaceDevice.INSTANCE().sendMessage(canMessage);
     }
 
 }
