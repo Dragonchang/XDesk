@@ -1,0 +1,28 @@
+boolean isApplication = MODULE_APPLICATION_CAN
+if (isApplication) {
+    apply plugin: 'com.android.application'
+} else {
+    apply plugin: 'com.android.library'
+}
+
+apply from: '../depends.gradle'
+
+android {
+    namespace 'com.xd.lib_can'
+    defaultConfig {
+        versionCode VER_CODE
+        versionName VER_NAME
+        if (isApplication) {
+            applicationId "com.xd.lib_can"
+        }
+    }
+    sourceSets {
+        main {
+            if (!isApplication) {
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+            } else {
+                manifest.srcFile 'src/main/app/AndroidManifest.xml'
+            }
+        }
+    }
+}

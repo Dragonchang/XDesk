@@ -24,3 +24,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "XDManager"
 include ':app'
+include ':lib_can'

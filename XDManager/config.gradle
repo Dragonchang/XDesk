@@ -1,0 +1,14 @@
+ext {
+
+    ver = [
+            VER_NAME = "0.0.1",
+            VER_CODE = 1
+    ]
+
+    moudle = [
+            //can
+            MODULE_APPLICATION_CAN = false,
+    ]
+
+}
+
