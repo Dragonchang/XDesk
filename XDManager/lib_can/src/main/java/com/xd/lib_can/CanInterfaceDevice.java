@@ -51,9 +51,14 @@ public class CanInterfaceDevice {
     /***
      * 启动can interface
      */
-    private void UpCanInterface()
+    public void UpCanInterface()
     {
-
+        String[] canConfigCmd = {"ip link set can0 type can bitrate 500000 dbitrate 2000000 fd on"};
+        String result = ShellUtil.execCommand(canConfigCmd, true, true);
+        Log.i("CanInterfaceDevice", "UpCanInterface result: " + result);
+        String[] canUpCmd = {"ip link set can0 up"};
+        result = ShellUtil.execCommand(canUpCmd, true, true);
+        Log.i("CanInterfaceDevice", "UpCanInterface result: " + result);
     }
 
     private void DownCanInterface()
@@ -70,8 +75,10 @@ public class CanInterfaceDevice {
             return InterfaceStatus.INTERFACE_STATUS_NONE;
         }
         Log.i("CanInterfaceDevice", "getInterfaceStatus canInfo: " + canInfo);
-        String[] canStatusCmd = {"echo \"$can_info\" | awk '{for(i=1;i<=NF;i++) if($i==\"state\") print $(i+1)}'"};
-        String canStatus = ShellUtil.execCommand(canStatusCmd, true, true);
+        String canStatusCmd = "echo \"" +canInfo +"\" | awk '{for(i=1;i<=NF;i++) if($i==\"state\") print $(i+1)}'";
+        Log.i("", "canStatusCmd: " + canStatusCmd);
+        String[] canStatusCmds = {canStatusCmd};
+        String canStatus = ShellUtil.execCommand(canStatusCmds, true, true);
         if(canStatus.isEmpty())
         {
             return InterfaceStatus.INTERFACE_STATUS_NONE;

@@ -142,6 +142,6 @@ public class ShellUtil {
                 + "==errorMsg:" + em;
 
         Log.e("ShellUtil",finalResult);
-        return finalResult;
+        return sm;
     }
 }
