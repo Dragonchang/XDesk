@@ -15,6 +15,12 @@ android {
         if (isApplication) {
             applicationId "com.xd.lib_can"
         }
+
+        externalNativeBuild {
+            cmake {
+                cppFlags ''
+            }
+        }
     }
     sourceSets {
         main {
@@ -23,6 +29,12 @@ android {
             } else {
                 manifest.srcFile 'src/main/app/AndroidManifest.xml'
             }
+        }
+    }
+    externalNativeBuild {
+        cmake {
+            path file('src/main/cpp/CMakeLists.txt')
+            version '3.18.1'
         }
     }
 }

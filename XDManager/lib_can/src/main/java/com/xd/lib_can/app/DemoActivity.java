@@ -21,7 +21,6 @@ public class DemoActivity extends AppCompatActivity {
         binding = ActivityDemoBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         int[] data = {0xA0, 0xA1, 0xA2, 0xA3, 0xA4, 0xA5, 0xA6, 0xA7};
-        data[0] = (data[0] + 1) % 0xFF;
         CanMessage canMessage = new CanMessage();
         canMessage.canid = 123;
         canMessage.eff = 0;

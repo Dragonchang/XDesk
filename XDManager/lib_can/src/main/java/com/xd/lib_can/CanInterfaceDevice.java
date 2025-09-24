@@ -43,11 +43,9 @@ public class CanInterfaceDevice {
             Log.w("CanInterfaceDevice", "OpenCanInterface failed with fd: " + fd);
 
         }
-        else {
-            mSendThread.start();
-            mReceiveThread.start();
-        }
-
+        mSendThread.start();
+        mReceiveThread.start();
+        mRunning = true;
     }
 
     /***
