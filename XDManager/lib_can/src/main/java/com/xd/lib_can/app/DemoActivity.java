@@ -28,6 +28,7 @@ public class DemoActivity extends AppCompatActivity {
         canMessage.len = 8;
         canMessage.data = data;
         CanInterfaceDevice.INSTANCE().sendMessage(canMessage);
+        CanInterfaceDevice.INSTANCE().getInterfaceStatus();
     }
 
 }

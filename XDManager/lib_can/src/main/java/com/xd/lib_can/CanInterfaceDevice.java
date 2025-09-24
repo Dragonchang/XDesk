@@ -61,9 +61,29 @@ public class CanInterfaceDevice {
 
     }
 
-    private InterfaceStatus getInterfaceStatus()
+    public InterfaceStatus getInterfaceStatus()
     {
-        return InterfaceStatus.INTERFACE_STATUS_DOWN;
+        String[] canInfoCmd = {"ip link show | grep can | grep \"state\""};
+        String canInfo = ShellUtil.execCommand(canInfoCmd, true, true);
+        if(canInfo.isEmpty())
+        {
+            return InterfaceStatus.INTERFACE_STATUS_NONE;
+        }
+        Log.i("CanInterfaceDevice", "getInterfaceStatus canInfo: " + canInfo);
+        String[] canStatusCmd = {"echo \"$can_info\" | awk '{for(i=1;i<=NF;i++) if($i==\"state\") print $(i+1)}'"};
+        String canStatus = ShellUtil.execCommand(canStatusCmd, true, true);
+        if(canStatus.isEmpty())
+        {
+            return InterfaceStatus.INTERFACE_STATUS_NONE;
+        }
+        Log.i("CanInterfaceDevice", "getInterfaceStatus canStatus: " + canStatus);
+        if(canStatus.equals("UP")){
+            return InterfaceStatus.INTERFACE_STATUS_UP;
+        } else if(canStatus.equals("DOWN")){
+            return InterfaceStatus.INTERFACE_STATUS_DOWN;
+        } else {
+            return InterfaceStatus.INTERFACE_STATUS_NONE;
+        }
     }
 
     private int OpenCanInterface()
