@@ -61,11 +61,6 @@ public class CanInterfaceDevice {
         Log.i("CanInterfaceDevice", "UpCanInterface result: " + result);
     }
 
-    private void DownCanInterface()
-    {
-
-    }
-
     public InterfaceStatus getInterfaceStatus()
     {
         String[] canInfoCmd = {"ip link show | grep can | grep \"state\""};
@@ -108,6 +103,23 @@ public class CanInterfaceDevice {
         }
     }
 
+    public void registerReceiveCallBack(ICanMessageReceiveCallBack callBack) {
+        synchronized (mMessageCallbacks) {
+            if (callBack != null && !mMessageCallbacks.contains(callBack)) {
+                mMessageCallbacks.add(callBack);
+                Log.i("CanInterfaceDevice", "registerReceiveCallBack callBack: " + callBack+ " size: " + mMessageCallbacks.size());
+            }
+        }
+    }
+
+    public void unregisterReceiveCallback(ICanMessageReceiveCallBack callBack) {
+        if (callBack == null) return;
+        synchronized (mMessageCallbacks) {
+            mMessageCallbacks.remove(callBack);
+            Log.i("CanInterfaceDevice", "unregisterReceiveCallback callBack: " + callBack+ " size: " + mMessageCallbacks.size());
+        }
+    }
+
     class SendThread extends Thread {
         @Override
         public void run() {
@@ -123,15 +135,27 @@ public class CanInterfaceDevice {
     }
 
     private void sendMessageImp(CanMessage msg) {
-        int ret = m_AndroidSocketcan.socketcanWrite(m_FD, msg.canid, msg.eff, msg.rtr, msg.len, msg.data);
+        int ret = m_AndroidSocketcan.socketcanWrite(m_FD, msg.m_canid, msg.m_eff, msg.m_rtr, msg.m_len, msg.m_data);
         Log.i("CanInterfaceDevice", "sendMessageImp with ret: " + ret);
     }
 
     class ReceiveThread extends Thread {
         @Override
         public void run() {
+            long[] ret = new long[12];
             while (mRunning) {
-
+                ret = m_AndroidSocketcan.socketcanRead(m_FD);
+                if(ret.length > 0 ) {
+                    CanMessage msg = new CanMessage(ret[0], ret[1], ret[2], (int) ret[3], Util.subLongArrayToIntArray(ret));
+                    Log.i("CanInterfaceDevice", "ReceiveThread with msg: "+ msg.toString());
+                    synchronized (mMessageCallbacks) {
+                        for (ICanMessageReceiveCallBack callback : mMessageCallbacks) {
+                            callback.onMessage(msg);
+                        }
+                    }
+                } else {
+                    Log.i("CanInterfaceDevice", "ReceiveThread with null data");
+                }
             }
         }
     }
