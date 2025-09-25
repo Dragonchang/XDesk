@@ -50,6 +50,6 @@ public class DemoActivity extends AppCompatActivity implements ICanMessageReceiv
 
     @Override
     public void onMessage(CanMessage msg) {
-
+        Log.e("","msg: " + msg.toString());
     }
 }

@@ -21,7 +21,7 @@ public class CanMessage {
                 ",eff:" + m_eff +
                 ",rtr:" + m_rtr +
                 ",len:" + m_len +
-                ",data:{}" +Util.intArrayToHexString(m_data) +
+                ",data: " +Util.intArrayToHexString(m_data) +
                 "}";
     }
 }

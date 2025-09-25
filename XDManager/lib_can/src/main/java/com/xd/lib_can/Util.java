@@ -43,7 +43,7 @@ public class Util {
         StringBuilder sb = new StringBuilder();
         for (int num : intArray) {
             // %08X 表示：补零至8位，大写十六进制
-            sb.append(String.format("%08X", num));
+            sb.append(String.format("%02X", num));
         }
         return sb.toString();
     }
