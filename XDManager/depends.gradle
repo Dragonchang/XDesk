@@ -4,11 +4,11 @@ apply plugin: 'kotlin-android-extensions'
 
 android {
 
-    compileSdk 34
+    compileSdk 32
 
     defaultConfig {
         minSdk 24
-        targetSdk 34
+        targetSdk 32
         versionCode 3
         versionName "1.3"
 

@@ -11,8 +11,8 @@ object Const {
     const val DEFAULT_HEIGHT2 = 1.5f
     const val DEFAULT_HEIGHT3 = 2f
 
-    const val DEFAULT_X_NUM = 0
-    const val DEFAULT_Y_NUM = 0
+    const val DEFAULT_X_NUM = 4
+    const val DEFAULT_Y_NUM = 7
 
     /*****************************************************************/
     const val DEFAULT_IP = "10.42.0.1"

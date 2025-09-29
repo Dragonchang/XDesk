@@ -29,22 +29,16 @@ import java.util.List;
  * 添加删除课桌
  */
 
-public class DeskManagerActivity extends BaseActivity {
+public class DeskManagerActivity extends BaseActivity<ActivityDeskManagerBinding> {
 
     private EditText rowInput;
     private EditText columnInput;
     private LinearLayout inputLayout;
     private ScrollView desk_layout;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-    }
-
     @NonNull
     @Override
-    public ViewBinding inflateBinding(@NonNull LayoutInflater layoutInflater) {
+    public ActivityDeskManagerBinding inflateBinding(@NonNull LayoutInflater layoutInflater) {
         return ActivityDeskManagerBinding.inflate(getLayoutInflater());
     }
 
