@@ -123,6 +123,18 @@ class WManager private constructor(private val mContext: Context) : ConfigCallba
         mConfigManager.height2 = height3
     }
 
+    override fun getAllDeskInfo(): String {
+        return mConfigManager.allDeskInfo
+    }
+
+    override fun setAllDeskInfo(allDeskInfo: String?) {
+        if (allDeskInfo != null) {
+            mConfigManager.allDeskInfo = allDeskInfo
+        } else {
+            mConfigManager.allDeskInfo = "";
+        }
+    }
+
 
     companion object {
         private const val TAG = "DataManager"

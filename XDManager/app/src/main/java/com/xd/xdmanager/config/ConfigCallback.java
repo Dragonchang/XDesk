@@ -51,4 +51,8 @@ public interface ConfigCallback {
     float getHeight3();
 
     void setHeight3(float height3);
+
+    String getAllDeskInfo();
+
+    void setAllDeskInfo(String allDeskInfo);
 }

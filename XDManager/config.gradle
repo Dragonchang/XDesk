@@ -7,7 +7,7 @@ ext {
 
     moudle = [
             //can
-            MODULE_APPLICATION_CAN = true,
+            MODULE_APPLICATION_CAN = false,
     ]
 
 }

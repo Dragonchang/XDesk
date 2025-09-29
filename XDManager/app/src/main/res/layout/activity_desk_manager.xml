@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/bg">
+    <!-- 当desk数量为0时显示的输入界面 -->
+    <LinearLayout
+        android:id="@+id/inputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:gravity="center"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_btn_bg_up"
+            android:paddingStart="35dp"
+            android:paddingTop="8dp"
+            android:paddingEnd="35dp"
+            android:paddingBottom="8dp"
+            android:text="请输入课桌行列数"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:spacing="16dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_btn_bg_up"
+                    android:textColor="@color/white"
+                    android:text="行数:"
+                    android:textSize="16sp"/>
+
+                <EditText
+                    android:id="@+id/rowInput"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:background="@drawable/shape_btn_bg_up"
+                    android:textColor="@color/white"
+                    android:hint="输入行数"
+                    android:layout_marginTop="8dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_btn_bg_up"
+                    android:textColor="@color/white"
+                    android:text="列数:"
+                    android:textSize="16sp"/>
+
+                <EditText
+                    android:id="@+id/columnInput"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:background="@drawable/shape_btn_bg_up"
+                    android:textColor="@color/white"
+                    android:hint="输入列数"
+                    android:layout_marginTop="8dp"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/createButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="创建布局"
+            android:clickable="true"
+            android:drawablePadding="-30dp"
+            android:focusable="true"
+            android:gravity="center"
+            android:paddingStart="20dp"
+            android:layout_marginTop="32dp"
+            android:paddingHorizontal="24dp"
+            android:background="@drawable/shape_btn_bg_top"
+            android:textColor="@color/white"/>
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/desk_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+        <LinearLayout
+            android:id="@+id/box"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>

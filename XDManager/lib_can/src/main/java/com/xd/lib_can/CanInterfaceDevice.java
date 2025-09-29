@@ -41,7 +41,7 @@ public class CanInterfaceDevice {
         int fd = OpenCanInterface();
         if(fd < 0) {
             Log.w("CanInterfaceDevice", "OpenCanInterface failed with fd: " + fd);
-
+            UpCanInterface();
         }
         mSendThread.start();
         mReceiveThread.start();

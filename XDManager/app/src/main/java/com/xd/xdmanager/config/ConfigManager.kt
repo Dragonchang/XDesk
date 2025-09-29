@@ -113,6 +113,14 @@ class ConfigManager(private val mContext: Context) : ConfigCallback {
         putShareP(mContext, PREFER_HEIGHT3, height3)
     }
 
+    override fun getAllDeskInfo(): String {
+        return getShareP(mContext, PREFER_All_Desk_Info) ?: ""
+    }
+
+    override fun setAllDeskInfo(desks: String) {
+        putShareP(mContext, PREFER_All_Desk_Info, desks)
+    }
+
 
     companion object {
         private const val TAG = "ConfigManager"
@@ -129,5 +137,6 @@ class ConfigManager(private val mContext: Context) : ConfigCallback {
         private const val PREFER_SOFTVERION = "softversion"
         private const val PREFER_HARDVERSION = "hardversion"
         private const val PREFER_DEVICEID = "deviceid"
+        private const val PREFER_All_Desk_Info = "all_desk_info"
     }
 }
