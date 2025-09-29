@@ -146,7 +146,7 @@ public class CanInterfaceDevice {
             while (mRunning) {
                 ret = m_AndroidSocketcan.socketcanRead(m_FD);
                 if(ret.length > 0 ) {
-                    CanMessage msg = new CanMessage(ret[0], ret[1], ret[2], (int) ret[3], Util.subLongArrayToIntArray(ret));
+                    CanMessage msg = new CanMessage(ret[0], Util.subLongArrayToIntArray(ret));
                     Log.i("CanInterfaceDevice", "ReceiveThread with msg: "+ msg.toString());
                     synchronized (mMessageCallbacks) {
                         for (ICanMessageReceiveCallBack callback : mMessageCallbacks) {

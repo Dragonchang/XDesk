@@ -32,6 +32,7 @@ public class DemoActivity extends AppCompatActivity implements ICanMessageReceiv
         }
         CanInterfaceDevice.INSTANCE().registerReceiveCallBack(this);
         new Thread() {
+            long msgID = 0x18ffa040;
             long[] data = {0xA0, 0xA1, 0xA2, 0xA3, 0xA4, 0xA5, 0xA6, 0xA7};
             @Override
             public void run() {
@@ -41,7 +42,7 @@ public class DemoActivity extends AppCompatActivity implements ICanMessageReceiv
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    CanMessage canMessage = new CanMessage(123, 0, 0, 8 , Util.subLongArrayToIntArray(data));
+                    CanMessage canMessage = new CanMessage(msgID, Util.subLongArrayToIntArray(data));
                     CanInterfaceDevice.INSTANCE().sendMessage(canMessage);
                 }
             }
