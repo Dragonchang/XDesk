@@ -135,18 +135,19 @@ public class CanInterfaceDevice {
     }
 
     private void sendMessageImp(CanMessage msg) {
-        int ret = m_AndroidSocketcan.socketcanWrite(m_FD, msg.m_canid, msg.m_eff, msg.m_rtr, msg.m_len, msg.m_data);
+        int ret = m_AndroidSocketcan.socketcanSend(m_FD, msg.m_canid, msg.m_eff, msg.m_rtr, msg.m_len, msg.m_data);
         Log.i("CanInterfaceDevice", "sendMessageImp with ret: " + ret);
     }
 
     class ReceiveThread extends Thread {
         @Override
         public void run() {
-            long[] ret = new long[12];
+            byte[] data = new byte[8];
             while (mRunning) {
-                ret = m_AndroidSocketcan.socketcanRead(m_FD);
-                if(ret.length > 0 ) {
-                    CanMessage msg = new CanMessage(ret[0], Util.subLongArrayToIntArray(ret));
+                byte[] ret = m_AndroidSocketcan.socketcanReceive(m_FD);
+                if(ret != null && ret.length == 12 ) {
+                    System.arraycopy(ret, 4, data, 0, 8);
+                    CanMessage msg = new CanMessage(Util.byteToLong(ret, 0, 4), data);
                     Log.i("CanInterfaceDevice", "ReceiveThread with msg: "+ msg.toString());
                     synchronized (mMessageCallbacks) {
                         for (ICanMessageReceiveCallBack callback : mMessageCallbacks) {
@@ -154,7 +155,11 @@ public class CanInterfaceDevice {
                         }
                     }
                 } else {
-                    Log.i("CanInterfaceDevice", "ReceiveThread with null data");
+                    if(ret == null) {
+                        Log.i("CanInterfaceDevice", "ReceiveThread with null data");
+                    } else {
+                        Log.i("CanInterfaceDevice", "ReceiveThread with error data length: "+ret.length);
+                    }
                 }
             }
         }

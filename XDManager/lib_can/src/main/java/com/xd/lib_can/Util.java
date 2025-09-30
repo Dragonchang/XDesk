@@ -1,50 +1,48 @@
 package com.xd.lib_can;
 
 public class Util {
-    public static int[] subLongArrayToIntArray(long[] longArray) {
-        // 处理空数组情况
-        if (longArray == null) {
-            return new int[0];
+    // 十六进制字符表，用于快速查找
+    private static final char[] HEX_CHARS = "0123456789ABCDEF".toCharArray();
+
+    /**
+     * 将byte数组转换为十六进制字符串（大写）
+     * @param bytes 输入的byte数组
+     * @return 转换后的十六进制字符串，若输入为null则返回null
+     */
+    public static String bytesToHex(byte[] bytes) {
+        if (bytes == null) {
+            return null;
         }
 
-        // 计算起始索引（从第4个元素开始，索引为4）
-        int startIndex = 4;
-
-        // 如果数组长度小于等于起始索引，返回空数组
-        if (longArray.length <= startIndex) {
-            return new int[0];
+        char[] hexChars = new char[bytes.length * 2];
+        for (int i = 0; i < bytes.length; i++) {
+            // 将byte转为无符号整数（0-255）
+            int value = bytes[i] & 0xFF;
+            // 高4位对应十六进制的第一个字符
+            hexChars[i * 2] = HEX_CHARS[value >>> 4];
+            // 低4位对应十六进制的第二个字符
+            hexChars[i * 2 + 1] = HEX_CHARS[value & 0x0F];
         }
-
-        // 计算需要截取的元素数量
-        int length = longArray.length - startIndex;
-
-        // 创建目标int数组
-        int[] intArray = new int[length];
-
-        // 循环复制并转换（注意：long转int可能丢失精度）
-        for (int i = 0; i < length; i++) {
-            // 直接强制转换，若long值超出int范围会溢出
-            intArray[i] = (int) longArray[startIndex + i];
-        }
-
-        return intArray;
+        return new String(hexChars);
     }
 
     /**
-     * 将int数组转换为十六进制字符串（默认格式：大写，无前缀，每个int占8位十六进制）
-     * @param intArray 输入的int数组
-     * @return 转换后的十六进制字符串
+     * 将指定范围的byte数组转换为long
+     * @param bytes 源byte数组
+     * @param offset 起始偏移量
+     * @param length 要转换的字节长度（最多8字节）
+     * @return 转换后的long值
      */
-    public static String intArrayToHexString(int[] intArray) {
-        if (intArray == null || intArray.length == 0) {
-            return "";
+    public static long byteToLong(byte[] bytes, int offset, int length) {
+        if (length < 1 || length > 8) {
+            throw new IllegalArgumentException("转换长度必须在1-8之间");
         }
 
-        StringBuilder sb = new StringBuilder();
-        for (int num : intArray) {
-            // %08X 表示：补零至8位，大写十六进制
-            sb.append(String.format("%02X", num));
+        long result = 0;
+        for (int i = 0; i < length; i++) {
+            // 按大端模式（高位在前）拼接
+            result = (result << 8) | (bytes[offset + i] & 0xFF);
         }
-        return sb.toString();
+        return result;
     }
 }
